@@ -19,6 +19,7 @@ app.use('/api/user', require('./routes/user'));
 app.use('/api/video', require('./routes/video'));
 app.use('/api/subscribe', require('./routes/subscribe'));
 app.use('/api/comment', require('./routes/comment'));
+app.use('/api/like', require('./routes/like'));
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI)
