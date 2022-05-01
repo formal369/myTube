@@ -10,10 +10,11 @@ import LikeDislike from './Sections/LikeDislike';
 const VideoDetailPage = (props) => {
 
     const { videoId } = useParams();
-    const variable = { videoId: videoId }
-
-    const [VideoDetail, setVideoDetail] = useState([]);
+    // const [VideoDetail, setVideoDetail] = useState([]);
+    const [VideoDetail, setVideoDetail] = useState({});
     const [Comments, setComments] = useState([]);
+    
+    const variable = { videoId: videoId }
 
     useEffect(() => {
         // 비디오 정보를 가져오기
