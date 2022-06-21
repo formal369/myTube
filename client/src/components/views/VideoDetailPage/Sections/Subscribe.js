@@ -69,7 +69,7 @@ const Subscribe = (props) => {
                 if(response.data.success) {
                     setSubscribed(response.data.subscribed)
                 } else {
-                    alert('정보를 받아오는데 실패했습니다.')
+                    alert('구독여부 정보를 받아오는데 실패했습니다.')
                 }
             })
         }, [])

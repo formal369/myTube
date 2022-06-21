@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { Card, Avatar, Col, Typography, Row } from 'antd';
 import moment from 'moment';
@@ -8,16 +7,16 @@ import axios from 'axios';
 const { Title } = Typography;
 const { Meta } = Card;
 
-const SubscriptionPage = (props) => {
+const SearchPage = (props) => {
     const [Videos, setVideos] = useState([]);
 
     useEffect(() => {
 
-        const subscriptionVariable = { 
-            userFrom : localStorage.getItem('userId') 
-        }
+        let searchVariables = {
+            search : props.value
+          }
 
-        axios.post('/api/video/getSubscriptionVideos', subscriptionVariable)
+        axios.post('/api/search', searchVariables)
             .then(response => {
                 if (response.data.success) {
                     console.log("debug:" + response.data)
@@ -76,4 +75,4 @@ const SubscriptionPage = (props) => {
     );
 };
 
-export default SubscriptionPage;
+export default SearchPage;

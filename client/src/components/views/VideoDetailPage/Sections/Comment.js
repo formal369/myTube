@@ -18,9 +18,9 @@ const Comment = (props) => {
 
         const variables = {
             content: commentValue,
-            writer: user.userData._id,  // 리덕스에서 가져옴
+            writer: user.userData._id,  // LocalStorage가 아닌 리덕스에서 가져옴
             postId: videoId,
-            // responseTo: props.comment._id
+            responseTo: props.comment._id
         }
 
         axios.post('/api/comment/saveComment', variables)
@@ -44,7 +44,7 @@ const Comment = (props) => {
             {/* Comment Lists */}
 
             {props.commentLists && props.commentLists.map((comment, index) => (
-                (!comment.responseTo &&
+                (!comment.responseTo &&     // 대댓글이 없는 댓글
                     <React.Fragment>
                         <SingleComment refreshFunction={props.refreshFunction} comment={comment} postId={videoId} />
                         <ReplyComment refreshFunction={props.refreshFunction} parentCommentId={comment._id} postId={videoId} commentLists={props.commentLists} />

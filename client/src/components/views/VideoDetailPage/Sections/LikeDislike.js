@@ -10,13 +10,11 @@ const LikeDislike = (props) => {
     const [LikeAction, setLikeAction] = useState(null);
     const [DislikeAction, setDislikeAction] = useState(null);
     
-    let variable = {
+    let variable = { }
 
-    }
-
-    if(props.video) {
+    if(props.video) {   // 비디오 Like인 경우
         variable = { videoId: props.videoId, userId: props.userId }
-    } else {
+    } else {            // 댓글 Like인 경우
         variable = { commentId: props.commentId , userId: props.userId }
     }
 
@@ -25,28 +23,28 @@ const LikeDislike = (props) => {
         Axios.post('/api/like/getLikes', variable)
         .catch(response => {
             if(response.data.success) {
-                // 얼마나 많은 좋아요를 받았는지
+                // 얼마나 많은 Like를 받았는지
                 setLikes(response.data.likes.length)
 
-                // 내가 이미 좋아요를 눌렀는지
+                // 내가 이미 Like를 눌렀는지
                 response.data.likes.map(like => {
-                    if(like.userId === props.userId) {
+                    if(like.userId === props.userId) {      // LocalStorage의 userId와 같은 userId가 있다면
                         setLikeAction('liked')
                     }
                 })
 
             } else {
-                alert('좋아요 정보를 가져오는데 실패했습니다.')
+                alert('Like 정보를 가져오는데 실패했습니다.')
             }
         })
 
         Axios.post('/api/like/getDislikes', variable)
         .catch(response => {
             if(response.data.success) {
-                // 얼마나 많은 싫어요를 받았는지
+                // 얼마나 많은 Dislike를 받았는지
                 setDislikes(response.data.dislikes.length)
 
-                // 내가 이미 싫어요를 눌렀는지
+                // 내가 이미 Dislike를 눌렀는지
                 response.data.dislikes.map(dislike => {
                     if(dislike.userId === props.userId) {
                         setDislikeAction('disliked')
@@ -54,13 +52,13 @@ const LikeDislike = (props) => {
                 })
 
             } else {
-                alert('싫어요 정보를 가져오는데 실패했습니다.')
+                alert('Dislike 정보를 가져오는데 실패했습니다.')
             }
         })
     }, [])
 
     const onLike = () => {
-        if(LikeAction === null) {
+        if(LikeAction === null) {       // 'Like'가 클릭되어 있지 않을 때
             Axios.post('/api/like/upLike', variable)
                 .then(response => {
                     if(response.data.success) {
@@ -68,13 +66,13 @@ const LikeDislike = (props) => {
                         setLikes(Likes + 1)
                         setLikeAction('liked')
 
-                        if(DislikeAction !== null) {    // '싫어요'가 클릭이 되어있을 때
+                        if(DislikeAction !== null) {    // 'Dislike'가 클릭이 되어있을 때
                             setDislikeAction(null)
                             setDislikes(Dislikes - 1)
                         }
 
                     } else {
-                        alert('좋아요 올리기를 실패했습니다.')
+                        alert('Like 올리기를 실패했습니다.')
                     }
                 })
         } else {
@@ -86,7 +84,7 @@ const LikeDislike = (props) => {
                     setLikeAction(null)
                 
                 } else {
-                    alert('좋아요 내리기를 실패했습니다.')
+                    alert('Like 내리기를 실패했습니다.')
                 }
             })
         }
@@ -94,14 +92,14 @@ const LikeDislike = (props) => {
 
     const onDislike = () => {
 
-        if(DislikeAction !== null) {    // '싫어요'가 클릭이 되어있을 때
+        if(DislikeAction !== null) {    // 'Dislike'가 클릭이 되어있을 때
             Axios.post('/api/like/downDislike', variable)
                 .then(response => {
                     if(response.data.success) {
                         setDislikes(Dislikes - 1)
                         setDislikeAction(null)
                     } else {
-                        alert('싫어요 내리기를 실패했습니다.ㄹ')
+                        alert('Dislike 내리기를 실패했습니다.')
                     }
                 })
         } else {
@@ -111,13 +109,13 @@ const LikeDislike = (props) => {
                     setDislikes(Dislikes + 1)
                     setDislikeAction('disliked')
 
-                    if(LikeAction !== null) {    // '좋아요'가 클릭이 되어있을 때
+                    if(LikeAction !== null) {    // 'Like'가 클릭이 되어있을 때
                         setLikeAction(null)
                         setLikes(Likes - 1)
                     }
 
                 } else {
-                    alert('싫어요 내리기를 실패했습니다.ㄹ')
+                    alert('Dislike 내리기를 실패했습니다.')
                 }
             })
         }

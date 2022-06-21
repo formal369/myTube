@@ -19,16 +19,17 @@ const ReplyComment = (props) => {
 
         setChildCommentNumber(commentNumber)
 
-    }, [props.commentLists])
+    }, [props.commentLists])    // commentLists에 변동이 있을 때마다 재실행
 
 
+    // 대댓글을 렌더링해주는 함수
     const renderReplyComment = (parentCommentId) => 
 
         props.commentLists.map((comment, index) => (
             <React.Fragment>
                 {
-                    comment.responseTo === parentCommentId &&
-                    <div style={{ width: '80%', marginLeft: '45px' }}>
+                    comment.responseTo === parentCommentId &&       
+                    <div style={{ width: '80%', marginLeft: '40px' }}>
                         <SingleComment refreshFunction={props.refreshFunction} comment={comment} postId={props.videoId} />
                         <ReplyComment refreshFunction={props.refreshFunction} commentLists={props.commentLists} postId={props.videoId} parentCommentId={comment._id} />
                     </div>

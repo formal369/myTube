@@ -34,6 +34,7 @@ function NavBar() {
           onClick={showDrawer}
         >
         </Button>
+
         <Drawer
           title="Basic Drawer"
           placement="right"
@@ -42,8 +43,8 @@ function NavBar() {
           onClose={onClose}
           visible={visible}
         >
-          <LeftMenu mode="horizontal" />
-          <RightMenu mode="horizontal"  />
+          <LeftMenu mode="inline" />
+          <RightMenu mode="inline"  />
         </Drawer>
       </div>
     </nav>

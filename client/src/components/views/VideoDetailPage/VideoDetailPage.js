@@ -10,7 +10,6 @@ import LikeDislike from './Sections/LikeDislike';
 const VideoDetailPage = (props) => {
 
     const { videoId } = useParams();
-    // const [VideoDetail, setVideoDetail] = useState([]);
     const [VideoDetail, setVideoDetail] = useState({});
     const [Comments, setComments] = useState([]);
     
@@ -39,13 +38,13 @@ const VideoDetailPage = (props) => {
             })
     }, [])
 
-    // 하위 컴포넌트의 코멘트를 상위 컴포넌트의 코멘트와 병합하는 함수
+    // 하위 컴포넌트의 코멘트를 상위 컴포넌트의 코멘트와 병합하는 함수 (댓글과 대댓글을 달 때마다 상위 컴포넌트에 업데이트를 해줘야 됨)
     const refreshFunction = (newComment) => {
         setComments(Comments.concat(newComment))
     }
 
 
-    if(VideoDetail.writer) {
+    if(VideoDetail.writer) {       // * image 정보를 가져오는 중에 발생하는 undefined 에러 처리
         // 자신의 영상은 구독할 수 없게 처리
         const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem('userId')} />;
 
@@ -59,7 +58,7 @@ const VideoDetailPage = (props) => {
                             actions={[ <LikeDislike video userId={localStorage.getItem('userId')} videoId={videoId} />, subscribeButton ]}
                         >
                             <List.Item.Meta
-                                avatar={<Avatar src={VideoDetail.writer.image} />}
+                                avatar={<Avatar src={VideoDetail.writer.image} />}      // * image 정보를 가져오기 전에 화면이 렌더링이 되버려서 이미지가 undefined가 됨
                                 title={VideoDetail.writer.name}
                                 description={VideoDetail.description}
                             />

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser, registerUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

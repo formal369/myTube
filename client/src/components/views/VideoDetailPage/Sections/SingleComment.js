@@ -35,7 +35,7 @@ const SingleComment = (props) => {
                 if(response.data.success) {
                     console.log(response.data.result)
                     setCommentValue("");
-                    setOpenReply(false)
+                    setOpenReply(false);
                     props.refreshFunction(response.data.result)
                 } else {
                     alert('코멘트를 저장하는데 실패했습니다.')
@@ -66,7 +66,7 @@ const SingleComment = (props) => {
                         placeholder="코멘트를 작성해 주세요"    
                     />
                     <br />
-                    <button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</button>
+                    <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
                 </form>
             }
 

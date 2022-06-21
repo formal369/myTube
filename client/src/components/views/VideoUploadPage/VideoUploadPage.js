@@ -159,7 +159,7 @@ function VideoUploadPage() {
     
                         {ThumbnailPath !== "" &&
                             <div>
-                                <img src={`http://localhost:5000/${ThumbnailPath}`} alt="haha" />
+                                <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail_image" />
                             </div>
                         }
                     </div>

@@ -125,7 +125,7 @@ router.post("getSubscriptionVideos", (req, res) => {
 
     // 찾은 사람들의 비디오를 가지고 온다.
 
-    Video.find({ writer : { $in: subscribeUser }})
+    Video.find({ writer : { $in: subscribeUser }})      // $in : subscribeUser 배열 안에 속하는 값을 찾는 기능
         .populate('writer')
         .exec((err, videos) => {
             if(err) return res.status(400).send(err);

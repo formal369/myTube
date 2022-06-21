@@ -14,9 +14,9 @@ router.post('/getLikes', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {  // 영상 좋아요일 경우
         variable = { videoId: req.body.videoId }
-    } else {
+    } else {                // 코멘트 좋아요일 경우
         variable = { commentId: req.body.commentId }
     }
 
@@ -31,9 +31,9 @@ router.post('/getDislikes', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {  // 영상 싫어요일 경우
         variable = { videoId: req.body.videoId }
-    } else {
+    } else {                // 코멘트 싫어요일 경우
         variable = { commentId: req.body.commentId }
     }
 
@@ -48,9 +48,9 @@ router.post('/upLike', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {      // 영상 좋아요일 경우
         variable = { videoId: req.body.videoId, userId: req.body.userId }
-    } else {
+    } else {                    // 코멘트 좋아요일 경우
         variable = { commentId: req.body.commentId, userId: req.body.userId  }
     }
 
@@ -75,9 +75,9 @@ router.post('/downLike', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {      // 영상 좋아요일 경우
         variable = { videoId: req.body.videoId, userId: req.body.userId }
-    } else {
+    } else {                    // 코멘트 좋아요일 경우
         variable = { commentId: req.body.commentId, userId: req.body.userId  }
     }
 
@@ -93,9 +93,9 @@ router.post('/downDislike', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {      // 영상 싫어요일 경우
         variable = { videoId: req.body.videoId, userId: req.body.userId }
-    } else {
+    } else {                    // 코멘트 싫어요일 경우
         variable = { commentId: req.body.commentId, userId: req.body.userId  }
     }
 
@@ -110,9 +110,9 @@ router.post('/upDislike', (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
+    if(req.body.videoId) {      // 영상 싫어요일 경우
         variable = { videoId: req.body.videoId, userId: req.body.userId }
-    } else {
+    } else {                    // 코멘트 싫어요일 경우
         variable = { commentId: req.body.commentId, userId: req.body.userId  }
     }
 

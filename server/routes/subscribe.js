@@ -17,6 +17,7 @@ router.post('/subscribeNumber', (req, res) => {
 })
 
 router.post("/subscribed", (req, res) => {
+    // 이 영상을 구독했는지 정보를 DB에서 가
     Subscriber.find({ 'userTo': req.body.userTo, 'userFrom': req.body.userFrom })
         .exec((err, subscribe) => {
             if(err) return res.status(400).send(err);

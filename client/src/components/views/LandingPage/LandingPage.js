@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react'
-import { FaCode } from "react-icons/fa";
 import { Card, Avatar, Col, Typography, Row } from 'antd';
 import moment from 'moment';
 import axios from 'axios';
@@ -59,7 +58,7 @@ const LandingPage = () => {
     })
 
     return (
-        <div style={{ width: '85%', margin: '3rem auto' }}>
+        <div style={{ width: '85%', margin: '5rem auto' }}>
             <Title level={2} > Recommended </Title>
             <hr />
 

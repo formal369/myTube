@@ -1,5 +1,5 @@
 {
-  "name": "my_tube",
+  "name": "boiler-plate",
   "version": "1.0.0",
   "description": "",
   "main": "./server/index.js",
